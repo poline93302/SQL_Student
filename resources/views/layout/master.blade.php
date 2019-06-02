@@ -19,10 +19,10 @@
         </div>
 
         <footer class="foot" style="color:white;text-align: center">
-            <span>40543208 吳尚謙</span>
-            <span>40543226 唐煒傑</span>
-            <span>40543236 陳膺祿</span>
-            <span>40543238 黃浩東</span>
+            <span>40543208 吳尚謙</span>&nbsp;&nbsp;
+            <span>40543226 唐煒傑</span>&nbsp;&nbsp;
+            <span>40543236 陳膺祿</span>&nbsp;&nbsp;
+            <span>40543238 黃浩東</span>&nbsp;&nbsp;
         </footer>
     </div>
 

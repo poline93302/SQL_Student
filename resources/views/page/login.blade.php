@@ -13,7 +13,7 @@
                 <input type="password" v-model="loginInfo.teacher_password" name="teach_password" style="border:1px black solid;text-align: left"/>
             </div>
             <div class="flex-container-row btn-group">
-                <button type="submit" class="btn">登入</button>&nbsp; &nbsp;
+                <button type="submit" class="btn">登入</button>&nbsp;&nbsp; &nbsp;
                 <button type="button" class="btn">註冊</button>
             </div>
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">

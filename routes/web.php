@@ -19,5 +19,9 @@ Route::get('/login' ,'homeController@index');
 Route::post('/login',['as'=>'login','uses'=>'homeController@postLogin']);
 Route::get('/logout','homeController@Logout');
 
-Route::get('/{teacher_info?}',['as'=>'loginSuccess','uses'=>'homeController@showInfo']);
+Route::get('/login/{teacher_info?}',['as'=>'loginSuccess','uses'=>'homeController@showInfo']);
 Route::get('/registered',['as'=>'registered','uses'=>'homeController@registered']);
+
+
+Route::get('/table',"TableController@index");
+Route::get('/table/{list_id}',"TableController@EditList");

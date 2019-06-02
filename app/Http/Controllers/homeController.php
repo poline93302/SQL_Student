@@ -27,13 +27,11 @@ class homeController extends Controller
             Auth::login($user);
             Session::put('teach_id',$user->teach_id);
             Session::put('teach_class',$user->teach_class);
-            return redirect('/'.($user->teach_id));
+            return redirect('/login/'.($user->teach_id));
         }else{
             echo "<script> alert('輸入帳號密碼不存在') </script>";
             return redirect('login');
         }
-//
-
     }
 
     public function showInfo($teacher_info)

@@ -14,7 +14,7 @@ class InterproidCreateTable extends Migration
     public function up()
     {
         Schema::create('inter_pro_id_table', function (Blueprint $table) {
-            $table->integer('inter_pro_id')        ->comment('訪談項目編號');
+            $table->increments('inter_pro_id')        ->comment('訪談項目編號');
             $table->string('inter_pro')        ->comment('訪談項目');
         });
     }

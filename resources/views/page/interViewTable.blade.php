@@ -7,26 +7,26 @@
             <tr>
                 <td width="10%"> <span>學年 :</span> </td>
                 <td width="40%">
-                    <span>{{sysTime}}</span> <span> 年 </span> <span> {{sysTime > y = 9 }} </span><span> 學期</span>
+                    <span>{sysTime}}</span> <span> 年 </span> <span> {sysTime > y == 9 }} </span><span> 學期</span>
                 </td>
                 <td width="10%"> <span>部別 :</span> </td>
-                <td width="40%"> <span>{{std.info}} of 部門</span> </td><!--  -->
+                <td width="40%"> <span>{std.info}} of 部門</span> </td><!--  -->
             </tr>
             <tr>
                 <td> <span>導師 :</span> </td>
-                <td> <span>{{teac.info}} of 導師ID</span> </td><!--  -->
+                <td> <span>{teac.info}} of 導師ID</span> </td><!--  -->
                 <td> <span>學生 :</span> </td>
-                <td> <span>{{std.info}} of 學號</span> <span>{{std.info}} of 姓名</span> </td><!--  -->
+                <td> <span>{std.info}} of 學號</span> <span>{std.info}} of 姓名</span> </td><!--  -->
             </tr>
             <tr>
                 <td> <span>系別 :</span> </td>
-                <td> <span>{{teac.info}} of 班級</span> </td><!--  -->
+                <td> <span>{teac.info}} of 班級</span> </td><!--  -->
                 <td> <span>訪談時間 : </span> </td>
-                <td> <span>{{sysTime.info}}</span> </td><!--  -->
+                <td> <span>{sysTime.info}}</span> </td><!--  -->
             </tr>
         </table>
 
-        <inter-view-project :data = ></inter-view-project>
+{{--        <inter-view-project :data = ></inter-view-project>--}}
 
         <p class="span-row-2" style="padding-bottom: 10px;">3.  結語 <img src="../src/photo/edit.png"></img>   </p>      <!-- 3. -->
         <div class="span-row-3">
