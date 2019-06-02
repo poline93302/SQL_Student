@@ -20,7 +20,6 @@ class InterCreateTable extends Migration
             $table->integer('inter_conid')        ->comment('訪談內容編號');
             $table->dateTime('inter_time')        ->comment('訪談時間');
             $table->binary('inter_file')        ->comment('檔案');
-            $table->timestamps();
         });
     }
 

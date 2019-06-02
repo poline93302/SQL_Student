@@ -23,7 +23,6 @@ class StudentCreateTable extends Migration
             $table->string('stud_address')   ->comment('地址');
             $table->string('stud_mo')        ->comment('母親姓名');
             $table->string('stud_fa')        ->comment('父親姓名');
-            $table->timestamps();
         });
     }
 

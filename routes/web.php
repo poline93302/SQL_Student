@@ -15,4 +15,4 @@
 //    return view('homeController@index');
 //});
 
-Route::get('/','homeController@index');
+Route::get('/','homeController@index')->name('LoginStem');

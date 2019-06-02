@@ -38,8 +38,9 @@
 }
 .card{
     width: 400px;
-    height: 600px;
+    height: 550px;
     background-color: white;
+    border-radius: 30px;
 }
 .card-s{
     width:150px;
@@ -55,7 +56,7 @@
 
 .context{
     background-color: #EEEEEE;
-    min-height: 750px;
+    min-height: 700px;
     width: 61% ;
     margin: 0 18% 0 18%;
     padding: 15px 60px 15px 60px;
@@ -63,17 +64,22 @@
 
 .foot{
     height: 60px;
-    padding: 40px 0;
+    padding: 20px 0 20px 0;
     background-color: #3b4245;
 }
-
-.foot > p {
-    position: absolute;
-    left: 0; 
-    right: 0;
-    color: #fff;
-    outline: 9999px solid #3b4245;
-    clip: rect(0 9999px 9999px 0);
+.btn-small{
+    padding: 1px;
+    margin: 5px;
+}
+.btn-small-Green{
+    border-radius: 3px;
+    background-color: #1d643b;
+    color: white;
+}
+.btn-small-red{
+    border-radius: 3px;
+    background-color: #912a1a;
+    color: white;
 }
 
 .btn{
@@ -85,7 +91,7 @@
 
 .btn-group{
     width: 200px;
-    margin: 0 0 0 40%;
+    margin: 0 auto;
 }
 
 
@@ -101,4 +107,20 @@
 .span-row-3{
     padding-left: 80px;
     padding-bottom: 20px;
+}
+
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

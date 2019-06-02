@@ -18,7 +18,6 @@ class IntercorCreateTable extends Migration
             $table->string('teach_id')     ->comment('導師id');
             $table->string('stud_id')        ->comment('學號');
             $table->string('form_id')        ->comment('表單編號');
-            $table->timestamps();
         });
     }
 

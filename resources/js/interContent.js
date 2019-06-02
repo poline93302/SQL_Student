@@ -7,12 +7,12 @@ let interviewPorject=[
     { spanName : "生涯議題"    ,name:"issues"},
     { spanName : "生理健康"    ,name:"health"},
     { spanName : "其他"        ,name:"others"},
-]
+];
 new Vue({
-    el:"#interview-porject",
+    el:"#app",
     data : function(){
         return{
             interviewPorject,
         } 
     }
-})
+});

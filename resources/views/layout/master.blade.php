@@ -6,22 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>學生訪談系統</title>
 </head>
-    {{--@include('csslink')--}}
+    @include('layout.csslink')
 <body>
+    <div id="app">
+        <header class="navbor">
+            <span>學生訪談系統</span>
+        </header>
 
-<header class="navbor">
-    <span>學生訪談系統</span>
-</header>
+        <div class="context flex">
+            @yield('content-play')
+        </div>
 
-<div class="context flex">
-    {{----}}
-</div>
-
-<footer class="foot">
-    <p>Z</p>
-</footer>
-
+        <footer class="foot" style="color:white;text-align: center">
+            <span>40543208 吳尚謙</span>
+            <span>40543226 唐煒傑</span>
+            <span>40543236 陳膺祿</span>
+            <span>40543238 黃浩東</span>
+        </footer>
+    </div>
 
 </body>
-{{----}}
+    @include('layout.jsScrt')
 </html>

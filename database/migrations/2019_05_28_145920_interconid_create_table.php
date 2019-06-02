@@ -16,7 +16,6 @@ class InterconidCreateTable extends Migration
         Schema::create('inter_con_id_table', function (Blueprint $table) {
             $table->integer('inter_con_id')        ->comment('訪談內容編號');
             $table->string('inter_con')        ->comment('訪談內容');
-            $table->timestamps();
         });
     }
 
