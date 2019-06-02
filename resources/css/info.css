@@ -1,0 +1,104 @@
+*{
+    margin: 0; 
+    border: 0 ;
+    padding: 0; 
+    font-family: 'Signika', sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.inline-block{
+    display: inline-block;
+}
+.navbor{
+    background-color: #085394;
+    color: #fff;
+    font-size: 36px;
+    padding: 10px 10px 10px 5% ;
+}
+
+.flex{
+    display: flex;
+    padding: 20px;
+}
+.flex-container-rowR{
+    flex-direction:row-reverse ;
+}
+.flex-container-row{
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+.flex-container-col{
+    flex-direction: column;
+}
+.flex-0-0-auto{
+    flex: 0 0 auto;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.card{
+    width: 400px;
+    height: 600px;
+    background-color: white;
+}
+.card-s{
+    width:150px;
+    height: 150px;
+    background-color: white;
+    margin: 10px 30px 30px 40px;
+    padding: 30px 30px 30px 40px;
+    border-radius: 10px;
+}
+.card>img{
+    margin: 50px 0 50px 0;
+}
+
+.context{
+    background-color: #EEEEEE;
+    min-height: 750px;
+    width: 61% ;
+    margin: 0 18% 0 18%;
+    padding: 15px 60px 15px 60px;
+}
+
+.foot{
+    height: 60px;
+    padding: 40px 0;
+    background-color: #3b4245;
+}
+
+.foot > p {
+    position: absolute;
+    left: 0; 
+    right: 0;
+    color: #fff;
+    outline: 9999px solid #3b4245;
+    clip: rect(0 9999px 9999px 0);
+}
+
+.btn{
+    padding: 10px; 
+    border-radius: 5px;
+    background-color: gray;
+    color: whitesmoke;
+}
+
+.btn-group{
+    width: 200px;
+    margin: 0 0 0 40%;
+}
+
+
+.text-ali-center{
+    text-align: center;
+}
+
+.span-row-2{
+    font-size: 24px;
+    padding-left: 40px;
+}
+
+.span-row-3{
+    padding-left: 80px;
+    padding-bottom: 20px;
+}
