@@ -118,12 +118,25 @@ var interviewPorject = [{
   spanName: "其他",
   name: "others"
 }];
+var loginInfo = {
+  teacher_id: "",
+  teacher_name: "炒爽沒有",
+  teacher_class: "沒吵爽班",
+  teacher_password: ""
+};
 new Vue({
   el: "#app",
   data: function data() {
     return {
-      interviewPorject: interviewPorject
+      interviewPorject: interviewPorject,
+      loginInfo: loginInfo
     };
+  },
+  methods: {
+    check: function check(id, password) {
+      console.log(id + " " + password);
+      alert("登入");
+    }
   }
 });
 

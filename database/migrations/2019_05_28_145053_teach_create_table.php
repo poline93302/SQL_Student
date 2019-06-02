@@ -20,6 +20,8 @@ class TeachCreateTable extends Migration
             $table->string('teach_name')    ->comment('導師姓名');
             $table->string('teach_class')   ->comment('授課班級');
             $table->string('teach_id')      ->comment('導師登入帳號');
+            $table->string('teach_password')      ->comment('導師登入密碼');
+            $table->rememberToken();
         });
     }
 

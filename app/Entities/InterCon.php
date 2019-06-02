@@ -6,7 +6,7 @@ namespace App\Entities;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Air extends Authenticatable
+class InterCon extends Authenticatable
 {
     use  Notifiable;
     protected $table = 'inter_con_id_table';

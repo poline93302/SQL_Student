@@ -8,11 +8,20 @@ let interviewPorject=[
     { spanName : "生理健康"    ,name:"health"},
     { spanName : "其他"        ,name:"others"},
 ];
+let loginInfo= {teacher_id:"",teacher_name:"炒爽沒有",teacher_class:"沒吵爽班",teacher_password:"" };
+
 new Vue({
     el:"#app",
     data : function(){
         return{
             interviewPorject,
+            loginInfo,
         } 
+    },
+    methods:{
+        check(id,password){
+            console.log(id + " " + password);
+            alert("登入");
+        }
     }
 });
