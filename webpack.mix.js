@@ -11,8 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 //
-// mix.js('resources/js/app.js', 'public/js')
+// mix.js('resources/js/app.js', 'public/js');
 //     .sass('resources/sass/app.scss', 'public/css');
 
-mix.js('resources/js/interContent.js','public/bundle/js/index.js')
+mix.js('resources/js/app.js', 'public/bundle/js/index.js')
+    .js('resources/js/interContent.js','public/bundle/js/index.js')
     .js('resources/js/modelCome.js','public/bundle/js/index.js');

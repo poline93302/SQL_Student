@@ -2,8 +2,16 @@
 @section('content-play')
     <div class="flex-container-col" style="width: 100%">
         <div class="flex-container-row">
-            <button class="btn">匯入班級資料</button>
-            <button class="btn">複雜查詢功能</button>
+            <form method="post" action="{{route('excelFileGet')}}" enctype="multipart/form-data" name="getFile">
+                @csrf
+                <input class="btn" type="file" name="excelName" id="filename" onChange='f()'>
+                <input type="hidden" name="getFilename"/>
+                <button class="btn" type="submit" id="button">確定匯入</button>
+            </form>
+            <div class="flex-container-row">
+                <br>
+                <button class="btn" id="btn">複雜查詢功能</button>
+            </div>
         </div>
         <table width="100%">
             <tr>
@@ -19,3 +27,10 @@
         </table>
     </div>
 @endsection
+
+<script>
+    function f() {
+        let fileFullName = $('#filename').val();
+        console.log(fileFullName)
+    }
+</script>

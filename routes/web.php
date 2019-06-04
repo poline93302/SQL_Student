@@ -11,17 +11,25 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('homeController@index');
-//});
-//Route::group(['middleware'=>'auth'],function ())
-Route::get('/login' ,'homeController@index');
-Route::post('/login',['as'=>'login','uses'=>'homeController@postLogin']);
-Route::get('/logout','homeController@Logout');
+Route::get('/', function () {
+    return view('homeController@index');
+});
 
-Route::get('/login/{teacher_info?}',['as'=>'loginSuccess','uses'=>'homeController@showInfo']);
-Route::get('/registered',['as'=>'registered','uses'=>'homeController@registered']);
+Route::get('/login' ,'InfoController@index')->name('loginStart');                                                     //登入首頁
+Route::post('/login',['as'=>'login','uses'=>'AuthController@login']);                         //登入認證
 
+Route::group(['prefix' => '/info'], function () {
+    Route::get('/','InfoController@showInfo')->name('loginSuccess');                                //登入後
+    Route::post('/import','InfoController@import')->name('excelFileGet');
+});
 
-Route::get('/table',"TableController@index");
-Route::get('/table/{list_id}',"TableController@EditList");
+Route::get('/logout','InfoController@Logout');                                                    //登出
+Route::get('/registered',['as'=>'registered','uses'=>'homeController@registered']);               //註冊
+
+//Route::get('/{teacher_info?}',['as'=>'loginSuccess','uses'=>'homeController@showInfo']);          //老師登入成功
+//Route::get('/import/{id?}',['as'=>'importEx','uses'=>'homeController@import']);   //匯入
+
+Route::group(['middleware'=>'table'],function(){
+    Route::get('/',"TableController@index");                                                     //訪談表單
+    Route::get('/{list_id}',"TableController@EditList");                                        //修改表單
+});
