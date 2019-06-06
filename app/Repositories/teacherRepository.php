@@ -13,9 +13,4 @@ class teacherRepository
     {
         $this->teacher =  new Teacher();
     }
-
-    public function get_teacher($teacher_id)
-    {
-        return $this->teacher->where('teach_id',$teacher_id)->first();
-    }
 }

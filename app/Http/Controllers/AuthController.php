@@ -34,7 +34,7 @@ class AuthController extends Controller
 //            echo  "<script> alert('success')</script>";
             return redirect()->to(route('loginSuccess'));
         }else{
-            echo  "<script> alert('error')</script>";
+            echo  "<script> alert('請輸入登入資訊')</script>";
             return redirect('/login');
         }
 
@@ -44,5 +44,6 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
+        return redirect('/login');
     }
 }

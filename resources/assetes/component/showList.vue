@@ -1,24 +1,35 @@
 <template>
-    <tr v-for="item in infos">
-        <th>item.std_id</th>
-        <th>item.std_name</th>
-        <th>item.std_sex</th>
-        <th>item.std_address</th>
-        <th>
-            <button class="btn-small-Green btn-small" @click="showTable(std_id,time)">修改訪談資訊</button>
-            <button class="btn-small-red btn-small"   @click="createNewTable(std_id)">新增訪談資訊</button>
-        </th>
-    </tr>
 
+    <table width="100%" class="table-list">
+        <tr>
+            <th width="15%">學號</th>
+            <th width="15%">姓名</th>
+            <th width="10%">姓別</th>
+            <th width="20%">地址</th>
+            <th width="10%">訪談次數</th>
+            <th width="30%">訪談資訊</th>
+        </tr>
+        <tr v-for="row in infos">
+            <td>{{ row.stud_id }}</td>
+            <td>{{ row.stud_name }}</td>
+            <td>{{ row.stud_sex }}</td>
+            <td>{{ row.stud_address }}</td>
+            <td>time</td>
+            <td>
+                <button class="btn-small-Green  btn-small"   @click="showTable(std_id,time)">新增</button>
+                <button class="btn-small-Yellow btn-small"   @click="createNewTable(std_id)">修改</button>
+                <button class="btn-small-red    btn-small"   @click="createNewTable(std_id)">刪除</button>
+            </td>
+        </tr>
+    </table>
 </template>
 
 <script>
     export default {
-        name: "showList",
         props:{
             infos:{
                 type:Object,
-                required:true
+                request:true,
             }
         }
     }

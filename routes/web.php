@@ -24,7 +24,7 @@ Route::group(['prefix' => '/info'], function () {
 });
 
 Route::get('/logout','InfoController@Logout');                                                    //登出
-Route::get('/registered',['as'=>'registered','uses'=>'homeController@registered']);               //註冊
+Route::post('/registered',['as'=>'registered','uses'=>'InfoController@registered']);               //註冊
 
 //Route::get('/{teacher_info?}',['as'=>'loginSuccess','uses'=>'homeController@showInfo']);          //老師登入成功
 //Route::get('/import/{id?}',['as'=>'importEx','uses'=>'homeController@import']);   //匯入

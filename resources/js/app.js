@@ -6,6 +6,9 @@
 
 require('./bootstrap');
 
+let modalPath = require('../assetes/component/modalShow');
+let ListPath = require('../assetes/component/showList');
+
 window.Vue = require('vue');
 
 /**
@@ -18,9 +21,8 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('modalShow', require('../assetes/component/modalShow'));
+Vue.component('modalShow',modalPath.default);
+Vue.component('showList', ListPath.default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,3 +33,6 @@ Vue.component('modalShow', require('../assetes/component/modalShow'));
 const app = new Vue({
     el: '#app',
 });
+
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+

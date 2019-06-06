@@ -13,17 +13,6 @@ class teacherService
         $this->teacher_info = $teacher_info;
     }
 
-    /**
-     * @return checklogin
-     */
-    public function check($id,$passwd)
-    {
-        $checkName = $this->teacher_info->get_teacher($id);
-        if(!is_null($checkName)){
-            return $checkName;
-        }
-        return null;    //不存在
-    }
 }
 
 

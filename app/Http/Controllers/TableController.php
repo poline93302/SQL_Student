@@ -9,8 +9,8 @@ class TableController extends Controller
 {
     public function index()
     {
-        dd("123");
-//        return view('page.interViewTable');
+//        dd("123");
+        return view('page.interViewTable');
     }
 
     public function EditList()
