@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\teacherService;
 use App\Services\studentService;
+use App\Services\interviewtableService;
+use App\Entities\Teacher;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,19 +13,16 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\StudentImport;
-use App\Entities\Teacher;
-use function MongoDB\BSON\toJSON;
 
 class InfoController extends Controller
 {
-    protected $teacher_Info;
     protected $student_List;
-    protected $teacher_new ;
+    protected $inter_Info;
 
-    public function __construct(teacherService $teacher_Info,studentService $student_List)
+    public function __construct(studentService $student_List,interviewtableService $inter_Info)
     {
-        $this->teacher_Info = $teacher_Info;
         $this->student_List = $student_List;
+        $this->inter_Info   = $inter_Info;
     }
 
     public function index(){
@@ -36,9 +35,20 @@ class InfoController extends Controller
 
         $data=[
             'lists'=> $this->student_List->get_list(Auth::user()),
+            'std_time' => $this->inter_Info->count_linker(),
+        ];
+        return view('page.listPage',$data);
+    }
+
+    public function updateShow(Request $req)
+    {
+        $data=[
+            'lists'=> $this->student_List->get_change_list(Auth::user(),$req->student_key),
         ];
 
-        return view('page.listPage',$data);
+
+        echo collect($data)->toJson();
+//        return view('page.listPage',$data);
     }
 
     public function logout()
@@ -54,7 +64,6 @@ class InfoController extends Controller
             'password'=> Hash::make($req->input('regPassword')),
             'teach_class'   => $req->input('regClass'),
         ]);
-        Teacher::save();
         echo "<script>alert('註冊成功')</script>";
         return Redirect::to('/login');
     }
@@ -79,5 +88,10 @@ class InfoController extends Controller
             echo "<script> alert('請輸入正確格式之檔案') </script>";
         }
         return Redirect::to('/info');
+    }
+
+    public function student_time($id = null){
+//        dd($this->student_List->get_student_time($id));
+        return $this->student_List->get_student_time($id);
     }
 }

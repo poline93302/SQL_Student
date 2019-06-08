@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\teacherService;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use mysql_xdevapi\Session;
@@ -16,9 +15,9 @@ class AuthController extends Controller
     protected $teacherServer;
     protected $redirectTo = '{{route("loginSuccess")}}';
 
-    public function __construct(teacherService $user)
+    public function __construct()
     {
-        $this->teacherServer = $user;
+
     }
 
     public function username()

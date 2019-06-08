@@ -6,10 +6,10 @@ namespace App\Entities;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class InterCon extends Authenticatable
+class StudentView extends Authenticatable
 {
     use  Notifiable;
-    protected $table = 'inter_con_id_table';
+        protected $table = 'student_inter';
 //    protected $fillable = [
 //    ];
 //  guarded => 黑名單 ＝null fillable=>白名單

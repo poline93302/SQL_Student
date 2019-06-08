@@ -9,11 +9,11 @@
             </form>
             <div class="flex-container-row">
                 <br>
-                <button class="btn" id="btn">複雜查詢功能</button>
+                <button class="btn" id="btn">統計功能</button>
             </div>
         </div>
 
-        <show-list :infos="{{ $lists }}"></show-list>
+        <show-list :infos="{{ $lists }}" :std_time="{{ $std_time }}"></show-list>
     </div>
 @endsection
 

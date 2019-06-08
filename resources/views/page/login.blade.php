@@ -6,11 +6,11 @@
         <form action = {{route('login')}} method='post' enctype='multipart/form-data'>
             <div class="flex-container-row">
                 <label>帳號 : </label>
-                <input type="text"  name="teach_id" style="border:1px black solid;text-align: left;" name="teacher_name"/>
+                <input type="text"  name="teach_id" style="border:1px black solid;text-align: left;" name="teacher_name" placeholder="請輸入帳號"/>
             </div>
             <div class="flex-container-row">
                 <label>密碼 : </label>
-                <input type="password" name="teach_password" style="border:1px black solid;text-align: left"/>
+                <input type="password" name="teach_password" style="border:1px black solid;text-align: left" placeholder="請輸入密碼"/>
             </div>
             <div class="flex-container-row btn-group">
                 <button type="submit" class="btn">登入</button>&nbsp;&nbsp; &nbsp;

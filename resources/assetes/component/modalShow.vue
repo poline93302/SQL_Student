@@ -1,5 +1,4 @@
 <template>
-
         <div id="regModal" class="modal-content">
             <div class="modal-tle">
                 <span>註冊</span>

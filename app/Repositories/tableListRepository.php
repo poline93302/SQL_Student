@@ -20,8 +20,6 @@ class tableListRepository
              $user      = $this->teacher->where('teach_id',$id)->get(),
              $user_pass = $this->teacher->where('teach_password',$passwd)->get()
         ];
-
-//        dd($data);
         return $data;
     }
 }

@@ -14,10 +14,10 @@ class UserSeeder extends Seeder
         DB::table('teacher_table')->delete();
 
         \App\Entities\Teacher::create([
-            'teach_name'      => 'Tony',
-            'teach_class'     => '老大大大',
-            'teach_id'        => '123',
-            'password'          => Hash::make('123')
+            'teach_name'      => '林老師',
+            'teach_class'     => '怕',
+            'teach_id'        => '123456',
+            'password'          => Hash::make('123456')
         ]);
     }
 }

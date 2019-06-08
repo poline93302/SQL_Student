@@ -15,7 +15,7 @@ class IntercorCreateTable extends Migration
     {
         Schema::create('inter_cor_table', function (Blueprint $table) {
             $table->increments('id')         ->comment('流水號');
-            $table->string('teach_id')     ->comment('導師id');
+            $table->string('teach_id')       ->comment('導師id');
             $table->string('stud_id')        ->comment('學號');
             $table->string('form_id')        ->comment('表單編號');
         });
