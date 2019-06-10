@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Services\studentService;
 use App\Services\interviewtableService;
@@ -31,26 +32,41 @@ class TableController extends Controller
             'student_depart'=>  $this->student_info->get_student_info($student)['stud_depart'],
             'teacher_name'  =>  $req->user()['teach_name'],
             'teacher_class' =>  $req->user()['teach_class'],
+            'student_list'  =>  $this->linker->get_student_inter_list($student),
         ];
+
         return view('page.interViewTable',$data);
     }
 
-    public function EditList()
+    public function EditList(Request $req,$list_id = null)
     {
-        dd('Edit');
+        $data=[
+            'list_info' => $this->inter_info->take_form_id_info($list_id),
+            'stud_inter_info' => $this->linker->get_student_inter_list($req->student),
+        ];
+//        echo $data;
+        echo collect($data)->toJson();
     }
 
-    public function DelList()
+    public function DelList($list_id = null)
     {
-        dd('del');
+
+        $student = str_split($list_id,8);
+
+        $this->inter_info->del_id_form($list_id);
+        $data = [
+            'stud_inter_info' => $this->linker->get_student_inter_list($student[0]),
+        ];
+        echo collect($data)->toJson();
     }
+
 
     public function create(Request $req)
     {
         $teacher = Auth::user()['teach_name'];
-//        echo $req->file;
-
-        $this->inter_info->create_context_table($req->student,$req->check_info,$req->conclusion,$req->file);      //表單資訊表
-        $this->linker->create_link_table($req->student, $teacher);              //連接表
+        $form_id = $req->table_id!=''?$req->table_id:$req->student.Carbon::now('Asia/Hong_Kong')->format('Ymdhis');
+        echo  $form_id;
+        $this->inter_info->create_context_table($form_id,$req->student,$req->check_info,$req->conclusion,$req->file);      //表單資訊表
+        $this->linker->create_link_table($form_id, $teacher);              //連接表
     }
 }

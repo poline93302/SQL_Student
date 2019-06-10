@@ -1,7 +1,11 @@
 <template>
     <div>
+        <p style="text-align: center;font-size:32px">
+            {{title_name[0]['name']}}
+            <img :src="this.title_name[0]['photo']">
+        </p>
             <p class="span-row-2 " style="padding-bottom: 10px;">2.  訪談項目
-                <img src="image/edit.png" id="choiceClass" onclick="Get_Choice();"/>
+                <img :src=image_path id="choiceClass" onclick="Get_Choice();"/>
             </p>
 <!--            訪談項目倒出-->
             <div class="flex flex-container-row flex-wrap">
@@ -9,11 +13,12 @@
                     <div v-if="  item.check  ">
                     <div class="card-s">
                             <span>{{  item.ch_name  }}</span>
-                            <textarea cols="20" rows="8" style="border:1px black dotted;">{{  item.context  }}</textarea>
+                            <textarea cols="20" rows="8" style="border:1px black dotted;" v-model="item.context">{{  item.context  }}</textarea>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <p class="span-row-2" style="padding-bottom: 10px;">3.  結語   </p>      <!-- 3. -->
             <div class="span-row-3">
@@ -30,8 +35,13 @@
 
             <span class="span-row-2" style="padding-bottom: 10px;">
                     <div class="btn-group" style="padding-left:80%;">
-                        <button @click="checkThing()" class="btn">送出</button>
-                        <button @click="linkOuter()" class="btn">取消</button>
+                        <span v-if="table_id==''">
+                            <button @click="checkThing(table_id)" class="btn">送出</button>
+                        </span>
+                        <span v-else>
+                            <button @click="checkThing(table_id)" class="btn">修改</button>
+                        </span>
+                            <button @click="linkOuter()" class="btn">返回班級列表</button>
                     </div>
             </span>
 
@@ -50,25 +60,30 @@
         props:{
             stud_teach_info: {
                 type : Array,
+            },
+            check_infos:{
+                type : Array,
+            },
+            conclusion:{
+                type : Object,
+            },
+            restartData: {
+                type: Function,
+            },
+            table_id:{
+                type: String,
+            },
+            title_name:{
+                type: Array,
             }
         },
         data:function () {
             return{
-                check_infos:[
-                    {ch_name: '人際關係', en_name:'relationship',check:false  ,context:""},
-                    {ch_name: '異性交往', en_name:'association' ,check:false ,context:""},
-                    {ch_name: '家庭狀況', en_name:'family'      ,check:false ,context:""},
-                    {ch_name: '情緒困擾', en_name:'emotional'   ,check:false ,context:""},
-                    {ch_name: '課業學習', en_name:'subject'     ,check:false ,context:""},
-                    {ch_name: '生涯議題', en_name:'career'      ,check:false ,context:""},
-                    {ch_name: '生理健康', en_name:'physiology'  ,check:false ,context:""},
-                    {ch_name: '其他'   , en_name:'others'       ,check:false ,context:""}
-                ],
-                conclusion: {continue:false,center:false,others:""},
-                file:new FormData(),
                 student_id     :  this.stud_teach_info[0],
                 successPath    :'/info',
                 tablecreatPath :'/new',
+                image_path : '../image/edit.png',
+                // image_neworedit : ,
             }
         },
         components:{
@@ -85,6 +100,7 @@
                 axios.post('/table/new',{
                     _method : "POST",
                     student: this.student_id,
+                    table_id: this.table_id != '' ? this.table_id:"",
                     check_info:[
                         this.check_infos[0].context,
                         this.check_infos[1].context,
@@ -104,14 +120,16 @@
                 })
                 .then(function(r) {
                     console.log(r.data);
-                    alert('存擋成功');
+                    console.log(this.table_id);
+                    alert(r.data);
                 })
                 .catch(function(error) {
                     console.log(error);
-                    alert('存擋失敗');
                 });
+                this.restartData();
+                window.location.href = '/table/'+this.student_id;
             },
-            checkThing(){
+            checkThing(id){
                 let on = false;
                 this.check_infos.forEach(function(e){
                     if(e.check){

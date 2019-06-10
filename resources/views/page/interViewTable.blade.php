@@ -34,11 +34,12 @@
             <tr>
                 <td> <span>系別 :</span> </td>
                 <td> <span>{{$teacher_class}}</span> </td><!--  -->
-                <td> <span>訪談時間 : </span> </td>
-                <td> <span>{{\Carbon\Carbon::now()}}</span> </td><!--  -->
+                <td> <span>現在時間 : </span> </td>
+                <td> <span>{{\Carbon\Carbon::now('Asia/Hong_Kong')}}</span> </td><!--  -->
             </tr>
         </table>
-        <get-table :stud_teach_info=[{{ $student_id }}]></get-table>
+        <table-way :stud_inter_info={{$student_list}} :stud_info=[{{$student_id}}] >
+        </table-way>
     </div>
 
 @endsection

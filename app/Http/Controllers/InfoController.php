@@ -35,7 +35,6 @@ class InfoController extends Controller
 
         $data=[
             'lists'=> $this->student_List->get_list(Auth::user()),
-            'std_time' => $this->inter_Info->count_linker(),
         ];
         return view('page.listPage',$data);
     }
@@ -46,9 +45,7 @@ class InfoController extends Controller
             'lists'=> $this->student_List->get_change_list(Auth::user(),$req->student_key),
         ];
 
-
         echo collect($data)->toJson();
-//        return view('page.listPage',$data);
     }
 
     public function logout()

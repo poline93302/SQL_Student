@@ -15,12 +15,15 @@ class linkerRepository
     }
 
     public function create_table($student,$teacher){
-        $form_id = $student.Carbon::now()->format('Ymdhis');
-        $this->inter_link_table->create([
-            'teach_id' => $teacher,
-            'stud_id'  => $student,
-            'form_id'  => $form_id,
-        ]);
+        $student_id = str_split($student,8);
+
+        $this->inter_link_table->updateOrCreate(
+            ['form_id'  => $student],
+            [
+                'teach_id' => $teacher,
+                'stud_id'  => $student_id[0],
+            ]
+        );
     }
 
     public function get_stud_time(){
@@ -29,5 +32,19 @@ class linkerRepository
             ->groupBy('stud_id')
             ->get();
         return $stud_count;
+    }
+
+    public function get_stud_list_info($id){
+        $stud_list = $this->inter_link_table
+            ->where('stud_id',$id)
+            ->orderBy('form_id','DESC')
+            ->get();
+        return $stud_list;
+    }
+
+    public function del_by_id_linker($id){
+        $this->inter_link_table
+            ->where('form_id',$id)
+            ->delete();
     }
 }

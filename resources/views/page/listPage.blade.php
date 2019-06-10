@@ -12,8 +12,8 @@
                 <button class="btn" id="btn">統計功能</button>
             </div>
         </div>
-
-        <show-list :infos="{{ $lists }}" :std_time="{{ $std_time }}"></show-list>
+{{--:std_time="{{ $std_time }}--}}
+        <show-list :infos={{ $lists }}></show-list>
     </div>
 @endsection
 

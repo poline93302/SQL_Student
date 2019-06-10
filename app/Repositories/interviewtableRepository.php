@@ -10,9 +10,9 @@ class interviewtableRepository
 {
     protected $inter_table;
 
-    public function __construct()
+    public function __construct(Inter $inter_table)
     {
-        $this->inter_table =  new Inter();
+        $this->inter_table =  $inter_table;
     }
 
 //    public function get_time($student){
@@ -21,15 +21,14 @@ class interviewtableRepository
 //        return $inter_time;
 //    }
 
-    public function get_context_table($student,$check_info,$conclusion,$file)
+    public function get_context_table($form_id,$student,$check_info,$conclusion,$file)
     {
-        $form_id = $student.Carbon::now()->format('Ymdhis');
         $time = Carbon::now()->format('Y-m-d h:i:s');
-
-        Inter::create([
+        $this->inter_table -> updateOrCreate([
             'form_id' => $form_id,
-            'inter_time'=>$time,
-            'inter_file'=>$file,
+        ],[
+            'inter_time'   =>$time,
+            'inter_file'   =>$file,
             'form_item_res'=>$check_info[0],
             'form_item_ass'=>$check_info[1],
             'form_item_fam'=>$check_info[2],
@@ -42,5 +41,15 @@ class interviewtableRepository
             'form_cont_hep'=>$conclusion[1],
             'form_cont_oth'=>$conclusion[2],
         ]);
+    }
+
+    public function get_table_info($id)
+    {
+        return ($this->inter_table->where('form_id',$id)->get());
+    }
+
+    public function del_by_id($id)
+    {
+        $this->inter_table->where('form_id',$id)->delete();
     }
 }

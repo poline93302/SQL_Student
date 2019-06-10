@@ -8,7 +8,7 @@ require('./bootstrap');
 
 let modalPath = require('../assetes/component/modalShow');
 let ListPath = require('../assetes/component/showList');
-let GetTablePath = require('../assetes/component/getTable');
+let TablePath = require('../assetes/component/tableWay');
 
 window.Vue = require('vue');
 
@@ -24,7 +24,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 Vue.component('modalShow',modalPath.default);
 Vue.component('showList', ListPath.default);
-Vue.component('getTable', GetTablePath.default);
+Vue.component('tableWay', TablePath.default);
 
 
 /**

@@ -40,7 +40,7 @@ class studentViewRepository
     }
     public function get_student($teacher_name)
     {
-        dd($this->student->where('teach_name',$teacher_name)->get());
-//        return $this->student->where('stud_id',$teacher_name)->first();
+//        dd($this->student->where('teach_name',$teacher_name)->get());
+        return $this->student->where('stud_id',$teacher_name)->first();
     }
 }

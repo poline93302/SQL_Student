@@ -6,9 +6,7 @@
                 <span>關鍵字：</span>
                 <input type="text" placeholder="找尋關鍵字" v-model="keyPoint" @change="changeData()">
             </div>
-        </div>
-<!--        <input type="hidden" name="_token" :value="csrf" />-->
-        <table width="100%" class="table-list">
+            <table width="100%" class="table-list">
             <tr>
                 <th width="15%">學號</th>
                 <th width="15%">姓名</th>
@@ -24,10 +22,11 @@
                 <td>{{ row.stud_address }}</td>
                 <td>{{ row.times != null? row.times :0}}</td>
                 <td>
-                    <a class="btn-small-Green   btn-small link-dis-hash" :href="'table/new/'+(row.stud_id)" >  訪談介面  </a>
+                    <a class="btn-small-Green   btn-small link-dis-hash" :href="'table/'+(row.stud_id)" >  訪談介面  </a>
                 </td>
             </tr>
-        </table>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -44,9 +43,6 @@
             infos:{
                 type:Object,
             },
-            std_time:{
-                type: Array,
-            }
         },
         methods:{
         //    改變時將資料從ＣＡＬＬ
@@ -68,25 +64,6 @@
                     console.log(error);
                 });
             },
-
-            getTimes(id){
-                let urlid = '/info/countId/'+id;
-                let data = 0;
-                axios.post(urlid,{
-                    _method: 'POST',
-                }).then(function(r) {
-                    // this.print_time[index].count = r.data;
-                    // console.log(r.data);
-                    data = r.data;
-                    console.log(data);
-                    // return r.data;
-                }).catch(function(error) {
-                    // console.log(error);
-                    console.log('get times error');
-                });
-                console.log(data);
-                return data;
-            }
         }
     }
 
