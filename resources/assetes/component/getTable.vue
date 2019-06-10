@@ -83,7 +83,8 @@
                 successPath    :'/info',
                 tablecreatPath :'/new',
                 image_path : '../image/edit.png',
-                // image_neworedit : ,
+                table_ids : this.table_id != '' ? this.table_id:"",
+
             }
         },
         components:{
@@ -100,7 +101,7 @@
                 axios.post('/table/new',{
                     _method : "POST",
                     student: this.student_id,
-                    table_id: this.table_id != '' ? this.table_id:"",
+                    table_id: this.table_ids,
                     check_info:[
                         this.check_infos[0].context,
                         this.check_infos[1].context,
@@ -120,11 +121,11 @@
                 })
                 .then(function(r) {
                     console.log(r.data);
-                    console.log(this.table_id);
-                    alert(r.data);
+                    // alert(r.data);
                 })
                 .catch(function(error) {
                     console.log(error);
+                    // alert(error);
                 });
                 this.restartData();
                 window.location.href = '/table/'+this.student_id;

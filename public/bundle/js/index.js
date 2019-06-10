@@ -1779,8 +1779,8 @@ __webpack_require__.r(__webpack_exports__);
       student_id: this.stud_teach_info[0],
       successPath: '/info',
       tablecreatPath: '/new',
-      image_path: '../image/edit.png' // image_neworedit : ,
-
+      image_path: '../image/edit.png',
+      table_ids: this.table_id != '' ? this.table_id : ""
     };
   },
   components: {
@@ -1797,16 +1797,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/table/new', {
         _method: "POST",
         student: this.student_id,
-        table_id: this.table_id != '' ? this.table_id : "",
+        table_id: this.table_ids,
         check_info: [this.check_infos[0].context, this.check_infos[1].context, this.check_infos[2].context, this.check_infos[3].context, this.check_infos[4].context, this.check_infos[5].context, this.check_infos[6].context, this.check_infos[7].context],
         conclusion: [this.conclusion["continue"] ? "true" : "false", this.conclusion.center ? "true" : "false", this.conclusion.others],
         file: this.file
       }).then(function (r) {
-        console.log(r.data);
-        console.log(this.table_id);
-        alert(r.data);
+        console.log(r.data); // alert(r.data);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error); // alert(error);
       });
       this.restartData();
       window.location.href = '/table/' + this.student_id;
@@ -2133,6 +2131,7 @@ __webpack_require__.r(__webpack_exports__);
       image_path_Two: '../image/delete.png',
       image_path_Three: '../image/testing.png',
       inter_name: "",
+      file: new FormData(),
       infos: this.stud_info,
       check_infos: [{
         ch_name: '人際關係',
@@ -2184,7 +2183,6 @@ __webpack_require__.r(__webpack_exports__);
       },
       search_start: "",
       search_end: "",
-      file: new FormData(),
       title_info: [{
         'name': '新增',
         'photo': '../image/add.png'

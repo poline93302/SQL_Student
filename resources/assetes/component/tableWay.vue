@@ -35,6 +35,7 @@
                 image_path_Two:'../image/delete.png',
                 image_path_Three:'../image/testing.png',
                 inter_name:"",
+                file:new FormData(),
                 infos: this.stud_info,
                 check_infos:[
                     {ch_name: '人際關係', en_name:'relationship',check:false  ,context:""},
@@ -51,7 +52,6 @@
                 conclusion: {continue:false,center:false,others:""},
                 search_start : "",
                 search_end : "",
-                file:new FormData(),
                 title_info :[
                     {
                         'name': '新增',
@@ -70,7 +70,7 @@
             },
             stud_inter_info:{
                 type : Array,
-            }
+            },
         },
         methods:{
             change_name(id){
