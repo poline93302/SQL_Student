@@ -52,7 +52,6 @@ class TableController extends Controller
     {
 
         $student = str_split($list_id,8);
-
         $this->inter_info->del_id_form($list_id);
         $data = [
             'stud_inter_info' => $this->linker->get_student_inter_list($student[0]),
@@ -63,10 +62,29 @@ class TableController extends Controller
 
     public function create(Request $req)
     {
+        //抓取現在老師
         $teacher = Auth::user()['teach_name'];
+        //確認表單檔名是否為空(是否有輸入)
+
+        $req->file !=''?$filepath ='../public/upfile/'.$req->file:$filepath="";
+
+        //判斷表單標號是否為空：目標確認編輯ＯＲ新增
         $form_id = $req->table_id!=''?$req->table_id:$req->student.Carbon::now('Asia/Hong_Kong')->format('Ymdhis');
-        echo  $form_id;
-        $this->inter_info->create_context_table($form_id,$req->student,$req->check_info,$req->conclusion,$req->file);      //表單資訊表
+
+
+        $this->inter_info->create_context_table($form_id,$req->student,$req->check_info,$req->conclusion,$filepath);      //表單資訊表
         $this->linker->create_link_table($form_id, $teacher);              //連接表
     }
+
+    public function createfile(Request $req)
+    {
+//        製作路徑
+        header('Access-Control-Allow-Origin: *');
+        $path = $req->file('file');
+        $name = $req->file('file')->getClientOriginalName();
+        $localpath = '../public/upfile/'.$name;
+        move_uploaded_file($path,$localpath);
+        echo $localpath;
+    }
 }
+

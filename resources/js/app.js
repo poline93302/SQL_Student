@@ -9,6 +9,7 @@ require('./bootstrap');
 let modalPath = require('../assetes/component/modalShow');
 let ListPath = require('../assetes/component/showList');
 let TablePath = require('../assetes/component/tableWay');
+let ToneFatherPath = require('../assetes/component/toneFater');
 
 window.Vue = require('vue');
 
@@ -25,6 +26,7 @@ window.Vue = require('vue');
 Vue.component('modalShow',modalPath.default);
 Vue.component('showList', ListPath.default);
 Vue.component('tableWay', TablePath.default);
+Vue.component('toneFater',ToneFatherPath.default);
 
 
 /**

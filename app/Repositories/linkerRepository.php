@@ -25,14 +25,14 @@ class linkerRepository
             ]
         );
     }
-
-    public function get_stud_time(){
-        $stud_count = $this->inter_link_table
-            ->select('stud_id', DB::raw('count(*) as times'))
-            ->groupBy('stud_id')
-            ->get();
-        return $stud_count;
-    }
+//
+//    public function get_stud_time(){
+//        $stud_count = $this->inter_link_table
+//            ->select('stud_id', DB::raw('count(*) as times'))
+//            ->groupBy('stud_id')
+//            ->get();
+//        return $stud_count;
+//    }
 
     public function get_stud_list_info($id){
         $stud_list = $this->inter_link_table

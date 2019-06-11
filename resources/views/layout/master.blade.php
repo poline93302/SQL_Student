@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <header class="navbor">
-            <span>學生訪談系統</span>
+            <a href="/info" style="text-decoration: none;color:white"><span>學生訪談系統</span></a>
         </header>
 
         <div class="context flex">

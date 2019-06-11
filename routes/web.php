@@ -31,6 +31,12 @@ Route::group(['prefix' => '/info'], function () {
 Route::group(['prefix'=>'table'],function(){
     Route::get('/{student}',"TableController@createList")->name('tableCreate');                                             //訪談表單
     Route::post('/new',"TableController@create")->name('tableCreating');                                                    //新增表單\
+    Route::post('new/file','TableController@createfile')->name('tableFileCreate');
     Route::post('/search/{list_id}',"TableController@EditList")->name('tableEdit');                                         //修改表單
     Route::post('/del/{list_id}',"TableController@DelList")->name('tableDel');                                              //刪除表單
+});
+
+Route::group(['prefix'=>'tone'],function (){
+    Route::get('/','ToneController@index')->name('tonomer');
+    Route::get('/info/get','ToneController@getInfo')->name('runinfo');
 });

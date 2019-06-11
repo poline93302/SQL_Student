@@ -9,10 +9,10 @@
             </form>
             <div class="flex-container-row">
                 <br>
-                <button class="btn" id="btn">統計功能</button>
+                <button class="btn" id="btn" onclick="location.href='{{route('tonomer')}}'">統計功能</button>
             </div>
         </div>
-{{--:std_time="{{ $std_time }}--}}
+
         <show-list :infos={{ $lists }}></show-list>
     </div>
 @endsection

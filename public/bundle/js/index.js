@@ -1776,11 +1776,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      formdata: new FormData(),
+      filename_real: "",
       student_id: this.stud_teach_info[0],
       successPath: '/info',
       tablecreatPath: '/new',
       image_path: '../image/edit.png',
-      table_ids: this.table_id != '' ? this.table_id : ""
+      table_ids: this.table_id != '' ? this.table_id : "",
+      config: {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
     };
   },
   components: {
@@ -1788,28 +1795,36 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     get_Up_Filename: function get_Up_Filename(event) {
-      this.file.append('file', event.target.files[0]);
+      this.formdata.append('file', event.target.files[0]);
+      this.filename_real = this.formdata.get('file').name;
+      console.log(this.filename_real);
+      console.log(this.formdata.get('file'));
     },
     linkOuter: function linkOuter() {
       window.location.href = this.successPath;
     },
     ajaxGo: function ajaxGo() {
+      var self = this;
       axios.post('/table/new', {
         _method: "POST",
         student: this.student_id,
         table_id: this.table_ids,
         check_info: [this.check_infos[0].context, this.check_infos[1].context, this.check_infos[2].context, this.check_infos[3].context, this.check_infos[4].context, this.check_infos[5].context, this.check_infos[6].context, this.check_infos[7].context],
         conclusion: [this.conclusion["continue"] ? "true" : "false", this.conclusion.center ? "true" : "false", this.conclusion.others],
-        file: this.file
+        file: this.filename_real
       }).then(function (r) {
-        console.log(r.data); // alert(r.data);
+        // console.log(r.data)
+        console.log(r.data);
+        alert(r.data);
       })["catch"](function (error) {
-        console.log(error); // alert(error);
+        console.log(error);
+        alert(error);
       });
       this.restartData();
+      this.move_file();
       window.location.href = '/table/' + this.student_id;
     },
-    checkThing: function checkThing(id) {
+    checkThing: function checkThing() {
       var on = false;
       this.check_infos.forEach(function (e) {
         if (e.check) {
@@ -1818,6 +1833,20 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
       on ? this.ajaxGo() : alert('請輸入資料');
+    },
+    move_file: function move_file() {
+      var self = this;
+      axios.post('/table/new/file', self.formdata, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (data) {
+        console.log(data.data);
+        alert(data.data);
+      })["catch"](function (error) {
+        console.log(error);
+        alert(error);
+      });
     }
   }
 });
@@ -2301,6 +2330,59 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (e) {
         console.log(e);
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assetes/component/toneFater.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assetes/component/toneFater.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "toneFater",
+  data: function data() {
+    return {
+      Mode: 'tone',
+      ste_count: [],
+      cha_count: [],
+      oth_count: []
+    };
+  },
+  methods: {
+    getaxios: function getaxios() {
+      axios.post('/');
     }
   }
 });
@@ -38578,11 +38660,7 @@ var render = function() {
       _c("input", {
         staticClass: "btn",
         attrs: { type: "file", value: "照片/影片上傳" },
-        on: {
-          change: function($event) {
-            return _vm.get_Up_Filename($event)
-          }
-        }
+        on: { change: _vm.get_Up_Filename }
       })
     ]),
     _vm._v(" "),
@@ -38602,7 +38680,7 @@ var render = function() {
                       staticClass: "btn",
                       on: {
                         click: function($event) {
-                          return _vm.checkThing(_vm.table_id)
+                          return _vm.checkThing()
                         }
                       }
                     },
@@ -38616,7 +38694,7 @@ var render = function() {
                       staticClass: "btn",
                       on: {
                         click: function($event) {
-                          return _vm.checkThing(_vm.table_id)
+                          return _vm.checkThing()
                         }
                       }
                     },
@@ -39397,6 +39475,102 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assetes/component/toneFater.vue?vue&type=template&id=d54960ae&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assetes/component/toneFater.vue?vue&type=template&id=d54960ae&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-container-row" }, [
+    _c("div", { staticStyle: { width: "12%" } }, [
+      _c("div", { staticStyle: { height: "70px" } }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn",
+            staticStyle: {
+              width: "100px",
+              height: "50px",
+              "background-color": "#1d643b"
+            },
+            on: { click: _vm.getaxios }
+          },
+          [_vm._v("結語")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { height: "70px" } }, [
+      _c(
+        "button",
+        { staticClass: "btn", staticStyle: { width: "100px", height: "50px" } },
+        [_vm._v("人數")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticStyle: {
+          width: "90%",
+          "background-color": "white",
+          height: "550px",
+          margin: "auto",
+          padding: "20px",
+          "border-radius": "20px"
+        }
+      },
+      [
+        _c("table", { staticStyle: { width: "100%" } }, [
+          _c("tr", [
+            _c("td", { staticStyle: { width: "33%" } }, [
+              _c("div", [_vm._v("持續關懷 (人數X人)")])
+            ]),
+            _vm._v(" "),
+            _c("td", { staticStyle: { width: "33%" } }, [
+              _c("div", [_vm._v("轉藉學輔中心(人數X人)")])
+            ]),
+            _vm._v(" "),
+            _c("td", { staticStyle: { width: "33%" } }, [
+              _c("div", [_vm._v("其他(人數X人)")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [_c("td")])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -51956,6 +52130,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assetes/component/toneFater.vue":
+/*!***************************************************!*\
+  !*** ./resources/assetes/component/toneFater.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _toneFater_vue_vue_type_template_id_d54960ae_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toneFater.vue?vue&type=template&id=d54960ae&scoped=true& */ "./resources/assetes/component/toneFater.vue?vue&type=template&id=d54960ae&scoped=true&");
+/* harmony import */ var _toneFater_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toneFater.vue?vue&type=script&lang=js& */ "./resources/assetes/component/toneFater.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _toneFater_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _toneFater_vue_vue_type_template_id_d54960ae_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _toneFater_vue_vue_type_template_id_d54960ae_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "d54960ae",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assetes/component/toneFater.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assetes/component/toneFater.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/assetes/component/toneFater.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_toneFater_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./toneFater.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assetes/component/toneFater.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_toneFater_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assetes/component/toneFater.vue?vue&type=template&id=d54960ae&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/assetes/component/toneFater.vue?vue&type=template&id=d54960ae&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_toneFater_vue_vue_type_template_id_d54960ae_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./toneFater.vue?vue&type=template&id=d54960ae&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assetes/component/toneFater.vue?vue&type=template&id=d54960ae&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_toneFater_vue_vue_type_template_id_d54960ae_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_toneFater_vue_vue_type_template_id_d54960ae_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -51976,6 +52219,8 @@ var ListPath = __webpack_require__(/*! ../assetes/component/showList */ "./resou
 
 var TablePath = __webpack_require__(/*! ../assetes/component/tableWay */ "./resources/assetes/component/tableWay.vue");
 
+var ToneFatherPath = __webpack_require__(/*! ../assetes/component/toneFater */ "./resources/assetes/component/toneFater.vue");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -51990,6 +52235,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('modalShow', modalPath["default"]);
 Vue.component('showList', ListPath["default"]);
 Vue.component('tableWay', TablePath["default"]);
+Vue.component('toneFater', ToneFatherPath["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

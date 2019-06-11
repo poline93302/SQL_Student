@@ -2,7 +2,7 @@
 @section('content-play')
 <div class="flex flex-container-rowR text-ali-center" style="width: 100%">
     <div class="card">
-        <img src="image/YL.svg" style="width: 150px;height: 150px;align-self: center;"></img>
+        <img src="image/YL.svg" style="width: 150px;height: 150px;align-self: center;" ></img>
         <form action = {{route('login')}} method='post' enctype='multipart/form-data'>
             <div class="flex-container-row">
                 <label>帳號 : </label>

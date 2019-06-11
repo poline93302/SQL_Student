@@ -72,7 +72,7 @@ class InfoController extends Controller
 //          原始名稱
         $name = $req->file('excelName')->getClientOriginalName();
 //          放置地方
-        $localpath = '/Users/yinglu_chen/SQL_Student/public/excelData/'.$name;
+        $localpath = '../public/excelData/'.$name;
 //          抓取暫存檔
         $path = $req->file('excelName')->getPathname();
         //判斷檔名

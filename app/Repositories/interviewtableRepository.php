@@ -52,4 +52,11 @@ class interviewtableRepository
     {
         $this->inter_table->where('form_id',$id)->delete();
     }
+
+    public function file_create($id,$filename)
+    {
+        $this->inter_table
+            ->where('form_id',$id)
+            ->update(['inter_file'=>$filename]);
+    }
 }
