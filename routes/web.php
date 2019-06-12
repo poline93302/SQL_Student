@@ -38,5 +38,6 @@ Route::group(['prefix'=>'table'],function(){
 
 Route::group(['prefix'=>'tone'],function (){
     Route::get('/','ToneController@index')->name('tonomer');
-    Route::get('/info/get','ToneController@getInfo')->name('runinfo');
+    Route::post('/info/get','ToneController@getInfo')->name('runinfo');
+    Route::post('/info/get/date','ToneController@getCount')->name('counter');
 });

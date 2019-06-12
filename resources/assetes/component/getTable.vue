@@ -35,7 +35,7 @@
 
             <span class="span-row-2" style="padding-bottom: 10px;">
                     <div class="btn-group" style="padding-left:80%;">
-                        <span v-if="table_id==''">
+                        <span v-if="table_id===''">
                             <button @click="checkThing()" class="btn">送出</button>
                         </span>
                         <span v-else>
@@ -104,6 +104,7 @@
             },
             ajaxGo(){
                 let self = this;
+                this.table_ids = this.table_id != '' ? this.table_id:"";
                 axios.post('/table/new',{
                     _method : "POST",
                     student: this.student_id,
@@ -127,12 +128,12 @@
                 },)
                 .then(function(r) {
                     // console.log(r.data)
-                    console.log(r.data);
-                    alert(r.data);
+                    // console.log(r.data);
+                    // alert(r.data);
                 })
                 .catch(function(error) {
                     console.log(error);
-                    alert(error);
+                    // alert(error);
                 });
                 this.restartData();
                 this.move_file();
@@ -160,11 +161,11 @@
                 )
                 .then(function(data){
                     console.log(data.data);
-                    alert(data.data);
+                    // alert(data.data);
                 })
                 .catch(function(error){
                     console.log(error);
-                    alert(error);
+                    // alert(error);
                 });
             }
         }

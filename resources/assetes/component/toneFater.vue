@@ -2,42 +2,67 @@
     <div class="flex flex-container-row">
         <div style="width: 12%">
             <div style="height:70px">
-                <button class="btn" style="width: 100px;height: 50px;background-color: #1d643b" @click=getaxios>結語</button>
+                <button class="btn" style="width: 90px;height: 50px;" @click="changeMode('tone')">結語</button>
             </div>
             <div style="height:70px">
-                <button class="btn" style="width: 100px;height: 50px">人數</button>
+                <button class="btn"  style="width: 90px;height: 50px" @click="changeMode('pro')" >人數</button>
             </div>
         </div>
-        <div style="width: 90%;background-color: white;height: 550px;margin: auto;padding: 20px;border-radius: 20px">
-            <table  style="width: 100%">
-                <tr>
-                    <td style="width: 33%"><div>持續關懷 (人數X人)</div></td>
-                    <td style="width: 33%"><div>轉藉學輔中心(人數X人)</div></td>
-                    <td style="width: 33%"><div>其他(人數X人)</div></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
+        <div v-if="Mode==='tone'" style="width: 100%">
+            <end-talk :item_stu=ste_count></end-talk>
+        </div>
+        <div v-else-if="Mode==='pro'" style="width:100%">
+            <end-count :item_stu_d=data_count></end-count>
         </div>
     </div>
 </template>
 
 <script>
+    import endTalkPath from './endTalk';
+    import getcountPath from './get_end_talk';
     export default {
         name: "toneFater",
         data:function () {
             return {
-                Mode:'tone',
-                ste_count:[],
-                cha_count:[],
-                oth_count:[],
+                Mode:'str',
+                color:'#b6c1b1',
+                color_c:'#1d643b',
+                ste_count:{},
+                data_count:{},
             }
         },
         methods:{
-            getaxios(){
-                axios.post('/')
+            changeMode(name){
+                this.Mode = name;
+                if(name == 'tone')
+                    this.getaxios();
+                else if(name == 'pro')
+                    this.getdateaxios();
             },
+            getaxios(){
+                let self = this;
+                axios.post('/tone/info/get')
+                    .then(function (r) {
+                        self.ste_count = r.data;
+                    })
+                    .catch(function (error) {
+                        alert(error)
+                    })
+            },
+            getdateaxios(){
+                let self = this;
+                axios.post('/tone/info/get/date')
+                    .then(function (r) {
+                        self.data_count = r.data;
+                    })
+                    .catch(function (error) {
+                        alert(error)
+                    })
+            }
+        },
+        components:{
+            'endTalk':endTalkPath,
+            'endCount':getcountPath,
         }
     }
 </script>

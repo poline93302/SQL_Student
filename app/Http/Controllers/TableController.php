@@ -71,7 +71,7 @@ class TableController extends Controller
         //判斷表單標號是否為空：目標確認編輯ＯＲ新增
         $form_id = $req->table_id!=''?$req->table_id:$req->student.Carbon::now('Asia/Hong_Kong')->format('Ymdhis');
 
-
+        echo  $req->table_id;
         $this->inter_info->create_context_table($form_id,$req->student,$req->check_info,$req->conclusion,$filepath);      //表單資訊表
         $this->linker->create_link_table($form_id, $teacher);              //連接表
     }

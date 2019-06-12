@@ -23,7 +23,7 @@ class interviewtableRepository
 
     public function get_context_table($form_id,$student,$check_info,$conclusion,$file)
     {
-        $time = Carbon::now()->format('Y-m-d h:i:s');
+        $time = Carbon::now('Asia/Hong_Kong')->format('Y-m-d h:i:s');
         $this->inter_table -> updateOrCreate([
             'form_id' => $form_id,
         ],[
@@ -58,5 +58,13 @@ class interviewtableRepository
         $this->inter_table
             ->where('form_id',$id)
             ->update(['inter_file'=>$filename]);
+    }
+
+    public function item_info()
+    {
+        $info = $this->inter_table
+                        ->where('form_cont_ste','true')
+                        ->get();
+        dd($info);
     }
 }
